@@ -1,26 +1,14 @@
 services:
-  postgis:
-    image: postgis/postgis:13-3.1
-    restart: always
-    expose:
-      - "5432"
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 123456
-      POSTGRES_DB: mydb
-      POSTGRES_HOST: localhost
-      POSTGRES_HOST_AUTH_METHOD: trust
   mysql:
-    image: mysql:5.7.35 #镜像名称以及版本
-    restart: always #重启docker后该容器也重启
-    container_name: mysql #容器名称
+    image: mysql 
+    restart: always
+    container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: 123456 #指定用户密码
+      MYSQL_ROOT_PASSWORD: 123456
       TZ: Asia/Shanghai
     ports:
-      - 3306:3306 #本地端口号与容器内部端口号
+      - 3306:3306 
+    platform: "windows/amd64"
   redis:
     image: redis
     restart: always
@@ -33,17 +21,15 @@ services:
       privileged: true
     command: 
       redis-server --port 6379 --requirepass 123456  --appendonly yes
+    platform: "windows/amd64"
   rabbitmq:
     image: rabbitmq:management
     restart: always
     ports:
       - "5672:5672"
       - "15672:15672"
+    hostname: rabbitmq
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
-      RABBITMQ_DEFAULT_VHOST: /
-      RABBITMQ_ERLANG_COOKIE: 123456
-      RABBITMQ_NODE_IP_ADDRESS: localhost
-      RABBITMQ_NODENAME: rabbit
-      RABBITMQ_NODE_PORT: 5672
+    platform: "windows/amd64"
