@@ -41,3 +41,12 @@ services:
     environment:
       MODE: standalone
     platform: "linux"
+  chatgpt:
+    image: pengzhile/pandora
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      PANDORA_CLOUD: cloud
+      PANDORA_SERVER: 0.0.0.0:3000
+    platform: "linux"
