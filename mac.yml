@@ -33,3 +33,11 @@ services:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
     platform: "linux/arm64/v8"
+  nacos:
+    image: nacos/nacos-server
+    restart: always
+    ports:
+      - "8848:8848"
+    environment:
+      MODE: standalone
+    platform: "linux/arm64/v8"
