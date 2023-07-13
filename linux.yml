@@ -45,8 +45,8 @@ services:
     image: pengzhile/pandora
     restart: always
     ports:
-      - "3000:3000"
+      - "9000:9000"
     environment:
       PANDORA_CLOUD: cloud
-      PANDORA_SERVER: 0.0.0.0:3000
+      PANDORA_SERVER: 0.0.0.0:9000
     platform: "linux"
